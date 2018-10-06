@@ -5,6 +5,9 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+app.use(loopback.static("public"));
+app.use(loopback.static("dist"));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -27,3 +30,4 @@ boot(app, __dirname, function(err) {
   if (require.main === module)
     app.start();
 });
+
