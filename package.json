@@ -7,10 +7,12 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node .",
+    "build": "webpack -d ",
+    "start": "npm run build && node server/server.js",
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
@@ -18,13 +20,22 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.0.0",
     "loopback-connector-mongodb": "^1.18.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.4",
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
-    "nsp": "^2.1.0"
+    "nsp": "^2.1.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "repository": {
     "type": "",
