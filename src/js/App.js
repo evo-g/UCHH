@@ -85,7 +85,7 @@ export default class App extends React.Component {
                     </div>
                     <button className="submit btn btn-info">Visit</button>
                 </form>
-                <div>{visits.map(vis => {
+                <div>{visits.reverse().map(vis => {
                     const doc = staff.find(member => member.id == vis.staffId);
                     const rm = rooms.find(r => r.id == vis.roomId);
                     return <div className='card'>
