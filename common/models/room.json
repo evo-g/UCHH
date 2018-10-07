@@ -20,6 +20,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "patients": {
+      "type": "hasOne",
+      "model": "patient",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

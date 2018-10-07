@@ -31,10 +31,13 @@ export default class App extends React.Component {
             roomId: roomNum
         })
             .then(() => {
-                axios.get("/api/visits")
-                    .then(response => {
-                        this.setState({visits: response.data})
-                    })
+                axios.get(`/api/rooms/${roomNum}/patients`)
+                    .then(res => {
+                        axios.get("/api/visits")
+                            .then(response => {
+                                this.setState({ visits: response.data })
+                            })
+                    });
             })
     }
 
