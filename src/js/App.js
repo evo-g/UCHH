@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import moment from 'moment';
+import StaffView from './StaffView';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -64,38 +65,43 @@ export default class App extends React.Component {
         const { staff, rooms, visits } = this.state;
 
         return (
+            <StaffView array={visits} staff={staff}/>
             <div>
-                <h1>MEDifications</h1>
-                <form className="form" onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label>Room #</label>
-                        <select onChange={this.handleChange} name="roomNum">{
-                            rooms.map(room => {
-                                return <option value={room.id} >{room.roomNum}</option>
-                            })
-                        }</select>
-                    </div>
-                    <div className="form-group">
-                        <label>Staff Member</label>
-                        <select onChange={this.handleChange} name="selStaff">{
-                            staff.map(s => {
-                                return <option value={s.id} >{`${s.title} ${s.firstName} ${s.lastName}`}</option>
-                            })
-                        }</select>
-                    </div>
-                    <button className="submit btn btn-info">Visit</button>
-                </form>
+                <h1 className="text-center">MEDifications</h1>
+                <div className="card">
+                    <form className="form" onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label className="form-label" for="roomNum">Room #</label>
+                            <select className="form-control" onChange={this.handleChange} name="roomNum">{
+                                rooms.map(room => {
+                                    return <option value={room.id} >{room.roomNum}</option>
+                                })
+                            }</select>
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label" for="selStaff">Staff Member</label>
+                            <select className="form-control" onChange={this.handleChange} name="selStaff">{
+                                staff.map(s => {
+                                    return <option value={s.id} >{`${s.title} ${s.firstName} ${s.lastName}`}</option>
+                                })
+                            }</select>
+                        </div>
+                        <button className="form-control" className="submit btn btn-info">Visit</button>
+                    </form>
+                </div>
                 <div>{visits.reverse().map(vis => {
                     const doc = staff.find(member => member.id == vis.staffId);
                     const rm = rooms.find(r => r.id == vis.roomId);
-                    return <div className='card'>
+                    return <div className='card visita'>
                         <div className='card-body'>
                             <div><label>Timestamp: </label>{' ' + moment(vis.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</div>
                             <div><label>Staff Member: </label>{` ${doc.title} ${doc.firstName} ${doc.lastName}`}</div>
                             <div><label>Room #: </label>{' ' + rm.roomNum}</div>
                         </div>
                     </div>
-                })}</div>
+                })
+                }
+                </div>
             </div>
         )
     }

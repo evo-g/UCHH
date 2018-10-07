@@ -1,0 +1,7 @@
+.form {
+    margin: 2em;
+}
+
+.visita:nth-child(odd) {
+    background-color: #a2aebb;
+}
