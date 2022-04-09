@@ -21,7 +21,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.0.0",
     "loopback-connector-mongodb": "^1.18.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "serve-favicon": "^2.0.1",
